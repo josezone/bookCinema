@@ -1,0 +1,33 @@
+{
+    "plugins": ["jsdoc-mermaid", "jsdoc-plantuml", "better-docs/typescript"],
+    "recurseDepth": 10,
+    "opts": {
+        "recurse": true,
+        "destination": "./docs/"
+    },
+    "source": {
+        "include": ["src"],
+        "includePattern": ".+\\.js(doc|x)|.ts(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    },
+    "plantuml": {
+        "puml": {
+          "create": true,
+          "destination": "jsDoc/puml"
+        },
+        "images": {
+          "create": false,
+          "destination": "jsDoc/images",
+          "defaultFormat": "png"
+        }
+      }
+}

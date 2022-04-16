@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+			"name": "Node Inspector",
+			"type": "pwa-node",
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ],
+			"request": "launch",
+			"args": ["${workspaceRoot}/src/index.ts"],
+			"runtimeArgs": ["-r", "ts-node/register"],
+			"cwd": "${workspaceRoot}",
+			"internalConsoleOptions": "openOnSessionStart",
+			"env": {
+				"TS_NODE_IGNORE": "false"
+			},
+        }
+    ]
+}
