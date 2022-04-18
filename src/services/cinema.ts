@@ -7,7 +7,7 @@ export function getCinemaSeatsService(
   cinemaTimeId: number
 ) {
   const query =
-    'SELECT `cs`.`id` AS `seatId`, `cs`.`seatNumber`, `cs`.`class`, `cs`.`cost`, `ub`.`bookingDone` FROM `user_booking` `ub` RIGHT JOIN `cinema_seats` `cs` ON `ub`.`cinemaTimeId` = `cs`.`id` LEFT JOIN `cinemas` `c` ON `c`.`id` = `cs`.`cinemasId` LEFT JOIN `cinema_time` `ct` ON `ct`.`cinemasId` = `c`.`id` LEFT JOIN `cinema_movie` `cm` ON `cm`.`cinemasId` = `c`.`id` LEFT JOIN `movie` `mv` ON `mv`.`id` = `cm`.`movieId` WHERE `ct`.`id` = ' +
+    'SELECT `cs`.`id` AS `seatId`, `cs`.`seatNumber`, `cs`.`class`, `cs`.`cost`, `ub`.`bookingDone` FROM `user_booking` `ub` RIGHT JOIN `cinema_seats` `cs` ON `ub`.`cinemaTimeId` = `cs`.`id` AND `ub`.`createdAt` >= @activityDateMidnight AND `ub`.`createdAt` < (@activityDateMidnight + 1) LEFT JOIN `cinemas` `c` ON `c`.`id` = `cs`.`cinemasId` LEFT JOIN `cinema_time` `ct` ON `ct`.`cinemasId` = `c`.`id` LEFT JOIN `cinema_movie` `cm` ON `cm`.`cinemasId` = `c`.`id` LEFT JOIN `movie` `mv` ON `mv`.`id` = `cm`.`movieId` WHERE `ct`.`id` = ' +
     cinemaTimeId +
     ' AND `mv`.`id` = ' +
     movieId +
